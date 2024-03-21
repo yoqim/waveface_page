@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="WaveFace: Authentic Face Restoration with Efficient Frequency Recovery">
+  <meta name="keywords" content="WaveFace, Diffusion model">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>WaveFace</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://github.com/yoqim/PR-HFR">
+            NIR-VIS Face Recognition
+          </a>
+          <a class="navbar-item" href="https://insightface.ai">
+            InsightFace
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">WaveFace: Authentic Face Restoration with Efficient Frequency Recovery</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://yoqim.github.io">Yunqi Miao</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://jiankangdeng.github.io">Jiankang Deng</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://jungonghan.github.io">Jungong Han</a><sup>3</sup>,
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>University of Warwick,</span>
+            <span class="author-block"><sup>2</sup>Imperial College London</span>
+            <span class="author-block"><sup>3</sup>University of Sheffield</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2403.12760.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="https://arxiv.org/pdf/2403.12760.pdf"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://drive.google.com/drive/folders/1T2Wor0KXbdZkod8YvoSKOkQCZHXXAiPq?usp=drive_link"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-google-drive"></i>
+                  </span>
+                  <span>Dataset</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Teaser. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <div class="content has-text-justified">
+          <div class="center-image">
+            <figure>
+              <img src="./static/images/general.jpg" 
+              class="interpolation-image"
+                alt="" />
+              <figcaption>
+                <b>Left:</b> Illustration of our frequency-aware BFR scheme. Restoration is performed in the frequency domain instead of the pixel domain.
+                <b>Right:</b> Comparisons with SOTA methods. Previous methods struggle to restore facial details or the original identity while our method achieves a good balance of realness and fidelity with fewer artifacts.
+              </figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Blind face restoration via diffusion prior is a highly ill-posed problem, which suffers from 1) slow training and inference speed, and 2) failure in preserving the original identity and recovering fine-grained facial details.
+            In this work, we propose <b>WaveFace</b> to solve the problems in the frequency domain, where low- and high-frequency components decomposed by wavelet transformation are considered individually to maximize authenticity as well as efficiency.
+            The diffusion model is applied to recover the low-frequency component only, which presents general information of the original image but 1/16 in size.
+            To preserve the original identity, the generation is conditioned on the low-frequency component of low-quality images at each denoising step.
+            Meanwhile, high-frequency components at multiple decomposition levels are handled by an unified network, which recovers complex facial details in a single step.
+            Evaluations on four benchmark datasets show that:
+            1) WaveFace outperforms state-of-the-art methods in the authenticity, especially in terms of identity preservation, and
+            2) authentic images are restored with the efficiency 10x faster than existing diffusion model-based BFR methods.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <!-- Paper. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Method</h2>
+            <div class="center-image">
+              <figure>
+                <img src="./static/images/pipeline.jpg" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <figcaption>
+                  <strong>Overview of our model structure.</strong> We develop a hybrid-guidance identity-preserving image synthesis framework. Our model, built upon StableDiffusion, utilizes text prompts and reference human images to guide image synthesis while preserving human identity through an identity input.
+                </figcaption>
+              </figure>
+            </div>
+      </div>
+    </div>
+    <!--/ Paper video. -->
+  </div>
+  </section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Results -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Results</h2>
+        <div class="content has-text-justified">
+          <p>
+          We provide the synthetic <a href="https://drive.google.com/file/d/1lrXAJrZ-zMn-9wuMIc12p19qrNO7SJdG/view?usp=drive_link">CelebA-Test</a> used in our paper and <a href="https://drive.google.com/file/d/1m6vAa08rbqsNAjrNJsiUOQCiIAVkSOQo/view?usp=drive_link">our restoration</a> results. Please download to check more results.
+          </p>
+            <div class="center-image">
+              <figure>
+                <img src="./static/images/SOTA_1.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <figcaption>
+                  Comparison with state-of-the-art methods on <strong>CelebA-Test</strong>.
+                </figcaption>
+              </figure>
+            </div>
+            <p>
+
+            </p>
+            <div class="center-image">
+              <figure>
+                <img src="./static/images/SOTA_2.png" class="interpolation-image"
+                  alt="Interpolate start reference image." />
+                <figcaption>
+                  Comparison with state-of-the-art methods on <strong>Real-world datasets</strong>. Row 1-3: LFW-Test. Row 4-6: WebPhoto-Test. Row 7-9: WIDER-Test.
+                </figcaption>
+              </figure>
+            </div>
+
+      </div>
+    </div>
+    <!--/ Results -->
+  </div>
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{miao2024waveface,
+          author    = {Miao, Yunqi and Deng, Jiankang and Han, Jungong},
+          title     = {WaveFace: Authentic Face Restoration with Efficient Frequency Recovery},
+          journal   = {CVPR},
+          year      = {2024}
+        }
+    </code></pre>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="https://arxiv.org/pdf/2403.12760.pdf">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="https://drive.google.com/drive/folders/1T2Wor0KXbdZkod8YvoSKOkQCZHXXAiPq?usp=sharing" class="external-link" disabled>
+        <i class="fab fa-google-drive"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This page borrows the <a href="https://github.com/nerfies/nerfies.github.io">source code</a>. This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
